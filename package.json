@@ -2,14 +2,29 @@
 	"name": "vsls-counter",
 	"displayName": "Live Share Counter",
 	"publisher": "lostintangent",
-	"repository": "https://github.com/vsls-contrib/counter",
-	"description": "",
+	"description": "A sample VS Code extension that shows how to add new collaborative features to Live Share",
 	"version": "0.0.1",
+	"homepage": "https://github.com/vsls-contrib/counter",	
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vsls-contrib/counter"
+	},
+	"bugs": {
+		"url": "https://github.com/vsls-contrib/counter/issues"
+	  },
+	  "author": {
+		"name": "Jonathan Carter"
+	  },
 	"engines": {
 		"vscode": "^1.35.0"
 	},
 	"categories": [
 		"Other"
+	],
+	"keywords": [
+		"Collaboration",
+		"Sharing",
+		"Remote"
 	],
 	"activationEvents": [
 		"onFileSystem:vsls",

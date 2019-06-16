@@ -1,0 +1,40 @@
+{
+	"name": "vsls-counter",
+	"displayName": "Live Share Counter",
+	"publisher": "lostintangent",
+	"repository": "https://github.com/vsls-contrib/counter",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onFileSystem:vsls",
+		"onCommand:liveshare.start",
+		"onCommand:liveshare.startFromActivityBar",
+		"onCommand:liveshare.startReadOnly",
+		"onCommand:liveshare.startReadOnlyFromActivityBar"
+	],
+	"main": "./out/extension.js",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^3.1.4",
+		"vscode": "^1.1.25",
+		"tslint": "^5.8.0",
+		"@types/node": "^8.10.25"
+	},
+	"dependencies": {
+		"vsls": "^0.3.1291"
+	},
+	"extensionDependencies": [
+		"ms-vsliveshare.vsliveshare"
+	]
+}

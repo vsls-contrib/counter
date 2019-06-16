@@ -6,6 +6,7 @@ import {
   TreeDataProvider,
   TreeItem
 } from "vscode";
+
 import { INCREMENT_COUNT_COMMAND } from "./constants";
 import { ICountStore } from "./store";
 

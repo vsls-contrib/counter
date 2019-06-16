@@ -41,6 +41,12 @@ export async function activate(context: ExtensionContext) {
     if (e.session.role === Role.Host) {
       store.count = 0;
 
+      // Expose a new custom RPC service, that allows
+      // guests in a Live Share session to retrieve and
+      // synchronize custom state with each other. In the
+      // case of this sample, the state being sychronized
+      // is simply a count, and the only action that
+      // can be taken on it is to increment the count.
       service = await vsls.shareService(SERVICE_NAME);
       service!.onRequest(GET_COUNT_REQUEST, () => {
         return store.count;
@@ -53,6 +59,11 @@ export async function activate(context: ExtensionContext) {
         service!.notify(INCREMENT_COUNT_NOTIFICATION, e);
       });
     } else if (e.session.role === Role.Guest) {
+      // Attempt to grab a proxy reference to the custom
+      // counter service on the host. If this doesn't exist,
+      // then it means the host doesn't have this extension
+      // installed, and therefore, the extension should 
+      // gracefully degrade.
       service = await vsls.getSharedService(SERVICE_NAME);
       if (!service) {
         return;

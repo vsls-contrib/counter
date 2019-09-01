@@ -13,7 +13,7 @@ import { store } from "./store";
 
 export async function activate(context: ExtensionContext) {
   // Get access to the Live Share API. Since this extension
-  // takes a "hard dependency" on Live Share, we can guaruntee,
+  // takes a "hard dependency" on Live Share, we can guarantee,
   // that this API would always be available. Otherwise,
   // we could check check for null, which indicates the end-user
   // doesn't have Live Share installed alongside your extension.
@@ -36,7 +36,7 @@ export async function activate(context: ExtensionContext) {
   );
 
   // This event will fire whenever an end-user joins
-  // or leaves a sessionn, either of the host or guest.
+  // or leaves a session, either of the host or guest.
   vsls.onDidChangeSession(async e => {
     if (e.session.role === Role.Host) {
       store.count = 0;
@@ -44,7 +44,7 @@ export async function activate(context: ExtensionContext) {
       // Expose a new custom RPC service, that allows
       // guests in a Live Share session to retrieve and
       // synchronize custom state with each other. In the
-      // case of this sample, the state being sychronized
+      // case of this sample, the state being synchronized
       // is simply a count, and the only action that
       // can be taken on it is to increment the count.
       service = await vsls.shareService(SERVICE_NAME);
